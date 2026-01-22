@@ -1,0 +1,77 @@
+<% layout('layout/boilerplate') -%>
+  <%=success %>
+    <!-- <h1>All Listings</h1> -->
+
+    <!-- ✅ Airbnb Style Bar -->
+    <div class="airbar">
+
+      <!-- ✅ Categories -->
+      <div class="aircats">
+        <div class="aircat active"><i class="bi bi-tree"></i>Farms</div>
+        <div class="aircat"><i class="bi bi-building"></i>Rooms</div>
+        <div class="aircat"><i class="bi bi-camera"></i>Amazing views</div>
+        <div class="aircat"><i class="bi bi-buildings"></i>Iconic cities</div>
+        <div class="aircat"><i class="bi bi-water"></i>Surfing</div>
+        <div class="aircat"><i class="bi bi-droplet-half"></i>Amazing pools</div>
+        <div class="aircat"><i class="bi bi-umbrella"></i>Beach</div>
+        <div class="aircat"><i class="bi bi-house-door"></i>Cabins</div>
+        <div class="aircat"><i class="bi bi-emoji-smile"></i>OMG!</div>
+        <div class="aircat"><i class="bi bi-water"></i>Lakefront</div>
+
+        <!-- ✅ Extra -->
+        <div class="aircat"><i class="bi bi-fire"></i>Trending</div>
+        <div class="aircat"><i class="bi bi-snow"></i>Arctic</div>
+        <div class="aircat"><i class="bi bi-gem"></i>Luxe</div>
+      </div>
+
+      <!-- ✅ Toggle Button Right -->
+      <div class="taxbox">
+        Display total before taxes
+        <label class="sw">
+          <input type="checkbox" id="taxToggle">
+          <span class="sl"></span>
+        </label>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2">
+      <% for (let list of lists) { %>
+
+        <a href="/listings/<%= list._id %>" class="listing-link">
+          <div class="card col">
+
+
+            <img
+              src="<%= list.image && list.image.url ? list.image.url : 'https://via.placeholder.com/400x300?text=No+Image' %>"
+              class="card-img-top" alt="listing img" style="height: 20rem;">
+
+            <div class="card-img-overlay">
+              <p>abc</p>
+            </div>
+
+            <div class="card-body">
+              <p class="card-text">
+                <b>
+                  <%= list.title %>
+                </b><br>
+
+                ₹
+                <span class="price" data-price="<%= list.price %>">
+                  <%= list.price !=null ? list.price.toLocaleString('en-IN') : 'N/A' %>
+                </span>
+                /night
+
+                <span class="gst-text d-none">(incl. 18% GST)</span>
+              </p>
+            </div>
+
+
+          </div>
+        </a>
+
+        <% } %>
+    </div>

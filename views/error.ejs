@@ -1,0 +1,12 @@
+<% layout("/layout/boilerplate.ejs") %>
+
+<div class="row mt-4">
+  <div class="alert alert-danger col-6 offset-3 text-center" role="alert">
+    <h4 class="alert-heading">Error <%= err.statusCode %></h4>
+
+    <p><%= err.message %></p>
+
+    <hr>
+    <a href="/listings" class="btn btn-outline-dark">Go Back</a>
+  </div>
+</div>
