@@ -27,7 +27,10 @@ const { error } = require("console");
 const upload = multer({ storage });
 
 async function main() {
-  await mongoose.connect(dbUrl);
+  await mongoose.connect(dbUrl, {
+    tlsAllowInvalidCertificates: true,
+    tlsAllowInvalidHostnames: true,
+  });
 }
 main()
   .then(() => console.log("Connected to DB"))
@@ -81,10 +84,6 @@ app.use((req, res, next) => {
   res.locals.currUser = req.user;
   next();
 });
-
-// app.get("/", (req, res) => {
-//   res.send("this is root");
-// });
 
 app.use("/listings", listingsRout);
 app.use("/listings/:id/reviews", reviewsRout);
