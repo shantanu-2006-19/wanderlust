@@ -42,7 +42,7 @@ const listingSchema = new Schema({
     type: [Number],
     required: true,
   },
-},
+}
 
 });
 

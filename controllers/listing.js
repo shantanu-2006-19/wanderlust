@@ -52,6 +52,7 @@ module.exports.createNewListing = async (req, res) => {
     newListing.image = { url, filename };
     newListing.geometry=response.body.features[0].geometry;
     await newListing.save();
+    console.log(newListing)
     req.flash("success", "new Listing Created");
     res.redirect("/listings");
 }
@@ -66,7 +67,7 @@ module.exports.renderEditForm = async (req, res) => {
         return res.redirect("/listings");
     }
     let OriginalImageUrl=listing.image.url;
-    OriginalImageUrl = OriginalImageUrl.replace("/upload","/upload/h_100")
+    OriginalImageUrl.replace("/upload","/upload/h_100")
 
     res.render("listings/edit.ejs", { listing ,OriginalImageUrl});
 };
