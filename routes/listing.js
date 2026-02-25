@@ -11,7 +11,7 @@ const multer = require("multer");
 const { cloudinary, storage } = require("../cloudConfig.js");
 const upload = multer({ storage });
 
-
+console.log("Om chavre");
 
 router
     .route("/")
